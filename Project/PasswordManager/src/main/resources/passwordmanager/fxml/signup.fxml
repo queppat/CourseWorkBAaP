@@ -10,23 +10,23 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" stylesheets="@../styles/signup.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passwordmanager.controllers.SignupController">
-   <Label alignment="CENTER" layoutX="159.0" layoutY="89.0" prefHeight="76.0" prefWidth="185.0" styleClass="main-label" text="Регистрация" textAlignment="CENTER">
+   <Label alignment="CENTER" layoutX="157.0" layoutY="89.0" prefHeight="76.0" prefWidth="185.0" styleClass="main-label" text="Регистрация" textAlignment="CENTER">
       <font>
          <Font size="25.0" />
       </font>
    </Label>
    <Button fx:id="signupButton" layoutX="129.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="48.0" prefWidth="258.0" text="Зарегистрироваться" />
-   <TextField fx:id="usernameField" layoutX="140.0" layoutY="195.0" prefHeight="46.0" prefWidth="258.0" promptText="Введите имя" stylesheets="@../styles/login.css" />
-   <Label layoutX="170.0" layoutY="165.0" prefHeight="25.0" prefWidth="151.0" text="Имя пользователя" />
+   <TextField fx:id="usernameField" layoutX="140.0" layoutY="195.0" prefHeight="46.0" prefWidth="228.0" promptText="Введите имя" stylesheets="@../styles/login.css" />
+   <Label layoutX="174.0" layoutY="159.0" prefHeight="25.0" prefWidth="151.0" text="Имя пользователя" />
    <Label layoutX="190.0" layoutY="247.0" prefHeight="19.0" prefWidth="128.0" text="Мастер-пароль" />
    <Label layoutX="161.0" layoutY="324.0" prefHeight="19.0" prefWidth="200.0" text="Подтверждение пароля" />
    <PasswordField fx:id="passwordField" layoutX="141.0" layoutY="273.0" prefHeight="46.0" prefWidth="258.0" promptText="Введите пароль" />
    <PasswordField fx:id="confirmPasswordField" layoutX="142.0" layoutY="350.0" prefHeight="46.0" prefWidth="258.0" promptText="Подтвердите пароль" />
-   <ImageView fx:id="backIcon" fitHeight="75.0" fitWidth="75.0" layoutX="212.0" layoutY="19.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="backIcon" fitHeight="75.0" fitWidth="75.0" layoutX="213.0" layoutY="14.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
       <Image url="@../icons/AppIcon.png" />
    </ImageView>
-   <TextField fx:id="visiblePasswordField" layoutX="141.0" layoutY="273.0" prefHeight="46.0" prefWidth="258.0" visible="false" />
-   <TextField fx:id="visibleConfirmPasswordField" layoutX="142.0" layoutY="350.0" prefHeight="46.0" prefWidth="258.0" visible="false" />
+   <TextField fx:id="visiblePasswordField" layoutX="141.0" layoutY="273.0" prefHeight="46.0" prefWidth="258.0" styleClass="text-field-for-password" visible="false" />
+   <TextField fx:id="visibleConfirmPasswordField" layoutX="142.0" layoutY="350.0" prefHeight="46.0" prefWidth="258.0" styleClass="text-field-for-password" visible="false" />
    <ImageView fx:id="eyeIcon" fitHeight="24.0" fitWidth="24.0" layoutX="335.0" layoutY="284.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
       <Image url="@../icons/close-purple-eye.png" />
    </ImageView>

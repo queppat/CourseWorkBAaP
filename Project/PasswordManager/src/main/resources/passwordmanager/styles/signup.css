@@ -51,8 +51,19 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 15, 0, 0, 0);
 }
 
+.text-field {
+    -fx-background-color: rgba(20, 25, 50, 0.9);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 12px 15px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #c06ef2;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1.5px;
+}
+
 /* Обновленные стили для полей ввода с иконкой */
-.password-field, .text-field {
+.password-field, .text-field-for-password {
     -fx-background-color: rgba(20, 25, 50, 0.9);
     -fx-text-fill: white;
     -fx-font-size: 14px;
@@ -65,7 +76,7 @@
     -fx-background-insets: 0 30 0 0; /* Фон заканчивается за 30px */
 }
 
-.password-field:focused, .text-field:focused {
+.password-field:focused, .text-field:focused, .text-field-for-password:focused {
     -fx-border-width: 2px;
     -fx-border-color: #d89cf7;
     -fx-effect: innershadow(gaussian, rgba(192, 110, 242, 0.4), 10, 0, 0, 0);

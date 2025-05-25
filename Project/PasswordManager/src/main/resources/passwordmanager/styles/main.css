@@ -1,0 +1,170 @@
+/* Основной фон с градиентом */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #1a1a2e, #16213e);
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Стили для TableView */
+.table-view {
+    -fx-background-color: rgba(40, 40, 80, 0.7);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Заголовки колонок */
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: linear-gradient(to bottom, #a64ac9, #8d3cb1);
+    -fx-size: 35px;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+    -fx-padding: 0 10px;
+}
+
+/* Ячейки таблицы */
+.table-view .table-cell {
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-padding: 10px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: rgba(30, 30, 60, 0.7);
+}
+
+.table-row-cell:even {
+    -fx-background-color: rgba(40, 40, 80, 0.7);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #c06ef2;
+    -fx-text-fill: white;
+}
+
+/* Пустые области таблицы */
+.table-view .column-header-background .filler {
+    -fx-background-color: linear-gradient(to bottom, #a64ac9, #8d3cb1);
+}
+
+.table-view .table-cell:empty {
+    -fx-background-color: rgba(40, 40, 80, 0.7);
+}
+
+.table-view .virtual-flow .corner {
+    -fx-background-color: rgba(40, 40, 80, 0.7);
+}
+
+/* Скроллбар */
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background {
+    -fx-background-color: rgba(40, 40, 80, 0.7);
+}
+
+/* Стили для TabPane */
+.tab-pane {
+    -fx-background-color: transparent;
+    -fx-tab-min-width: 150px;
+    -fx-tab-min-height: 50px;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 10px 0;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab {
+    -fx-background-color: rgba(40, 40, 80, 0.7);
+    -fx-background-radius: 10px 10px 0 0;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-border-width: 1px 1px 0 1px;
+    -fx-border-radius: 10px 10px 0 0;
+    -fx-padding: 10px 25px;
+    -fx-focus-color: transparent;
+}
+
+.tab:selected {
+    -fx-background-color: rgba(166, 74, 201, 0.9);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(166, 74, 201, 0.5), 10, 0, 0, 2);
+}
+
+.tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+.tab-label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: white;
+}
+
+/* Стили для кнопок */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #a64ac9, #8d3cb1);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 25px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(166, 74, 201, 0.5), 5, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #c06ef2, #a64ac9);
+    -fx-effect: dropshadow(three-pass-box, rgba(166, 74, 201, 0.8), 8, 0, 0, 2);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #8d3cb1, #a64ac9);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.button-danger {
+    -fx-background-color: linear-gradient(to bottom, #e94560, #d13652);
+}
+
+.button-danger:hover {
+    -fx-background-color: linear-gradient(to bottom, #ff6b81, #e94560);
+}
+
+/* Контейнер для кнопок */
+.button-container {
+    -fx-spacing: 15px;
+    -fx-padding: 15px;
+    -fx-alignment: CENTER;
+}
+
+/* Фикс для заполнения пустого пространства */
+.table-view *.scroll-bar *.increment-button,
+.table-view *.scroll-bar *.decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}

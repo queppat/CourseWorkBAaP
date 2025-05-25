@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@../styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passwordmanager.controllers.LoginController">
+   <Label alignment="CENTER" layoutX="105.0" layoutY="75.0" prefHeight="80.0" prefWidth="300.0" styleClass="main-label" text="Войдите в KeyForge">
+      <font>
+         <Font name="System Bold" size="25.0" />
+      </font>
+   </Label>
+   <Label layoutX="176.0" layoutY="170.0" prefHeight="22.0" prefWidth="152.0" text="Имя пользователя" />
+   <TextField fx:id="usernameField" layoutX="139.0" layoutY="198.0" prefHeight="46.0" prefWidth="254.0" promptText="Введите имя" />
+   <Label layoutX="185.0" layoutY="259.0" prefHeight="16.0" prefWidth="130.0" text="Мастер-пароль" />
+   <Button fx:id="loginButton" layoutX="154.0" layoutY="390.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="38.0" prefWidth="88.0" text="Войти" />
+   <PasswordField fx:id="passwordField" layoutX="139.0" layoutY="289.0" promptText="Введите пароль" />
+   <ImageView fx:id="backIcon" fitHeight="75.0" fitWidth="75.0" layoutX="214.0" layoutY="14.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../icons/AppIcon.png" />
+   </ImageView>
+   <TextField fx:id="visiblePasswordField" layoutX="139.0" layoutY="289.0" visible="false" />
+   <ImageView fx:id="eyeIcon" onMouseClicked="#togglePasswordVisibility" fitHeight="24.0" fitWidth="24.0" layoutX="331.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../icons/close-red-eye.png" />
+      </image>
+   </ImageView>
+</AnchorPane>

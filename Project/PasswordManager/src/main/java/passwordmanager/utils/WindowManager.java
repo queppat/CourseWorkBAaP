@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.Screen;
-import passwordmanager.controllers.MainController;
 
 import java.io.IOException;
 
@@ -35,8 +34,8 @@ public class WindowManager {
         double centerX = stage.getX() + stage.getWidth() / 2;
         double centerY = stage.getY() + stage.getHeight() / 2;
 
-        double newWidth = 700;
-        double newHeight = 570;
+        double newWidth = 550;
+        double newHeight = 600;
 
         double newX = centerX - newWidth / 2;
         double newY = centerY - newHeight / 2;
@@ -47,6 +46,7 @@ public class WindowManager {
         stage.setResizable(true);
         stage.setMinWidth(300);
         stage.setMinHeight(400);
+        stage.setResizable(false);
 
         stage.setX(newX);
         stage.setY(newY);

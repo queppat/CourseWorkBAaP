@@ -16,26 +16,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-public class ServiceStorageTabController {
+public class ServiceStorageController {
 
     @FXML private TableView<ServiceDTO> serviceTable;
     @FXML private TableColumn<ServiceDTO, String> serviceColumn;
     @FXML private TableColumn<ServiceDTO, String> usernameColumn;
-    @FXML private Button addButton;
-    @FXML private Button deleteButton;
-    @FXML private Button showPasswordButton;
 
-    private MainController mainController;
     private ServicesDAO servicesDAO;
     private final UserSession session = UserSession.getInstance();
-
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
-
-    public void setServicesDAO(ServicesDAO servicesDAO) {
-        this.servicesDAO = servicesDAO;
-    }
 
     @FXML
     public void initialize() {
@@ -62,27 +50,6 @@ public class ServiceStorageTabController {
        } catch (IOException e) {
             e.printStackTrace();
        }
-    }
-
-    @FXML
-        private void handleDeleteService() {
-        ServiceDTO selected = serviceTable.getSelectionModel().getSelectedItem();
-        if (selected != null) {
-            boolean confirmed = AlertUtils.showConfirmationDialog("Вы действительно хотите удалить этот элемент?");
-            if(confirmed) {
-                boolean successfulRemove = servicesDAO.deleteServiceById(selected.getId());
-                if(successfulRemove) {
-                    serviceTable.getItems().remove(selected);
-//                    AlertUtils.showSuccessAlert("Элемент удален успешно!");
-                }
-                else {
-                    AlertUtils.showErrorAlert("Что-то пошло не так при удалении пользователя!");
-                }
-            }
-        } else {
-            AlertUtils.showErrorAlert("Выберите запись для удаления");
-        }
-        updateListOfServices();
     }
 
     @FXML

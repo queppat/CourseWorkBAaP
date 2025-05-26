@@ -14,7 +14,6 @@ public class AuthController {
     @FXML
     private Button signupButton;
 
-    //TODO Доработать login.fxml и signup.fxml (разделить TextFields на те в которых есть иконка и в которых нету)
     @FXML
     private void handleLogin() {
         try {

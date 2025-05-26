@@ -24,9 +24,8 @@
       <Image url="@../icons/AppIcon.png" />
    </ImageView>
    <TextField fx:id="visiblePasswordField" layoutX="139.0" layoutY="289.0" styleClass="text-field-for-password" visible="false" />
-   <ImageView fx:id="eyeIcon" fitHeight="24.0" fitWidth="24.0" layoutX="331.0" layoutY="301.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../icons/close-red-eye.png" />
-      </image>
+   <ImageView fx:id="eyeIcon" fitHeight="24.0" fitWidth="24.0" layoutX="331.0" layoutY="301.0"
+              onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../icons/close-red-eye.png"/>
    </ImageView>
 </AnchorPane>

@@ -1,15 +1,19 @@
 package passwordmanager.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import passwordmanager.DAO.ServicesDAO;
 import passwordmanager.models.Service;
 import passwordmanager.utils.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class AddServiceController {
 
@@ -22,19 +26,47 @@ public class AddServiceController {
     @FXML
     private TextField visibleServicePasswordField;
     @FXML
+    private ImageView eyeIcon;
+    @FXML
     private TextField URLField;
     @FXML
     private Button addServiceButton;
 
     private ServicesDAO servicesDAO;
 
+    private final Image openedEyeIcon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/passwordmanager/icons/open-purple-eye.png")));
+    private final Image closedEyeIcon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/passwordmanager/icons/close-purple-eye.png")));
+
+    private boolean isPasswordVisible = false;
+
     public void initialize() {
         try {
             Connection connection = Database.getConnection();
             servicesDAO = new ServicesDAO(connection);
+
+            visibleServicePasswordField.textProperty().bindBidirectional(servicePasswordField.textProperty());
+
+            Platform.runLater(() -> usernameField.requestFocus());
+
+            UIBehaviorUtils.setupFieldNavigation(serviceNameField, usernameField);
+            UIBehaviorUtils.setupFieldNavigation(usernameField, servicePasswordField);
+            UIBehaviorUtils.setupFieldNavigation(servicePasswordField, URLField);
+            UIBehaviorUtils.setupFinalField(URLField, this::handleAddServiceButtonAction);
         } catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void togglePasswordVisibility() {
+        isPasswordVisible = UIBehaviorUtils.togglePasswordVisibility(
+                isPasswordVisible,
+                servicePasswordField,
+                visibleServicePasswordField,
+                eyeIcon,
+                openedEyeIcon,
+                closedEyeIcon
+        );
     }
 
     @FXML

@@ -1,17 +1,29 @@
-/* Основной фон с градиентом */
+/* Основной фон с глубоким синим градиентом */
 .root {
-    -fx-background-color: linear-gradient(to bottom, #1a1a2e, #16213e);
+    -fx-background-color: linear-gradient(to bottom, #121a2a, #0d1525);
     -fx-font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* Стили для TableView */
+/* Заголовки и текст */
+.label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
+
+.title-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #5840d3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 10, 0, 0, 2);
+}
+
 .table-view {
-    -fx-background-color: rgba(40, 40, 80, 0.7);
-    -fx-background-radius: 10px;
-    -fx-border-color: rgba(255, 255, 255, 0.2);
-    -fx-border-radius: 10px;
+    -fx-background-color: rgba(30, 35, 50, 0.9);
+    -fx-background-radius: 8px;
+    -fx-border-color: rgba(100, 110, 140, 0.4);
+    -fx-border-radius: 8px;
     -fx-border-width: 1px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
     -fx-table-cell-border-color: transparent;
     -fx-padding: 0;
 }
@@ -19,152 +31,144 @@
 /* Заголовки колонок */
 .table-view .column-header,
 .table-view .column-header-background .filler {
-    -fx-background-color: linear-gradient(to bottom, #a64ac9, #8d3cb1);
-    -fx-size: 35px;
+    -fx-background-color: linear-gradient(to bottom, #4a4dcc, #3a3daa);
+    -fx-size: 36px;
     -fx-border-width: 0 0 1px 0;
-    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-color: rgba(100, 110, 140, 0.3);
 }
 
 .table-view .column-header .label {
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-alignment: CENTER;
-    -fx-padding: 0 10px;
+    -fx-padding: 0 12px;
+    -fx-font-size: 13px;
 }
 
 /* Ячейки таблицы */
 .table-view .table-cell {
-    -fx-text-fill: white;
+    -fx-text-fill: #f0f0f0;
     -fx-border-color: transparent;
-    -fx-padding: 10px;
+    -fx-padding: 12px;
     -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 13px;
 }
 
+/* Чередование строк */
 .table-row-cell:odd {
-    -fx-background-color: rgba(30, 30, 60, 0.7);
+    -fx-background-color: rgba(25, 30, 45, 0.8);
 }
 
 .table-row-cell:even {
-    -fx-background-color: rgba(40, 40, 80, 0.7);
+    -fx-background-color: rgba(30, 35, 50, 0.8);
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #c06ef2;
+    -fx-background-color: #5d5fef;
     -fx-text-fill: white;
-}
-
-/* Пустые области таблицы */
-.table-view .column-header-background .filler {
-    -fx-background-color: linear-gradient(to bottom, #a64ac9, #8d3cb1);
-}
-
-.table-view .table-cell:empty {
-    -fx-background-color: rgba(40, 40, 80, 0.7);
-}
-
-.table-view .virtual-flow .corner {
-    -fx-background-color: rgba(40, 40, 80, 0.7);
 }
 
 /* Скроллбар */
-.table-view .virtual-flow .scroll-bar:vertical,
-.table-view .virtual-flow .scroll-bar:vertical .track,
-.table-view .virtual-flow .scroll-bar:vertical .track-background {
-    -fx-background-color: rgba(40, 40, 80, 0.7);
+.table-view .scroll-bar:vertical {
+    -fx-background-color: rgba(30, 35, 50, 0.8);
 }
 
-/* Стили для TabPane */
-.tab-pane {
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #4a4dcc;
+    -fx-background-radius: 4px;
+}
+
+/* Контекстное меню таблицы */
+.table-view .context-menu {
+    -fx-background-color: rgba(40, 45, 65, 0.95);
+    -fx-border-color: rgba(100, 110, 140, 0.4);
+}
+
+/* Панели и контейнеры */
+.pane, .vbox, .hbox {
     -fx-background-color: transparent;
-    -fx-tab-min-width: 150px;
-    -fx-tab-min-height: 50px;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
 }
 
-.tab-pane .tab-header-area {
-    -fx-background-color: transparent;
-    -fx-padding: 0 0 10px 0;
-}
-
-.tab-pane .tab-header-background {
-    -fx-background-color: transparent;
-}
-
-.tab {
-    -fx-background-color: rgba(40, 40, 80, 0.7);
-    -fx-background-radius: 10px 10px 0 0;
-    -fx-border-color: rgba(255, 255, 255, 0.2);
-    -fx-border-width: 1px 1px 0 1px;
-    -fx-border-radius: 10px 10px 0 0;
-    -fx-padding: 10px 25px;
-    -fx-focus-color: transparent;
-}
-
-.tab:selected {
-    -fx-background-color: rgba(166, 74, 201, 0.9);
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, rgba(166, 74, 201, 0.5), 10, 0, 0, 2);
-}
-
-.tab:selected .focus-indicator {
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-}
-
-.tab-label {
-    -fx-text-fill: #e0e0e0;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-}
-
-.tab:selected .tab-label {
-    -fx-text-fill: white;
-}
-
-/* Стили для кнопок */
+/* Кнопки - приятный сине-фиолетовый */
 .button {
-    -fx-background-color: linear-gradient(to bottom, #a64ac9, #8d3cb1);
+    -fx-background-color: linear-gradient(to bottom, #5d5fef, #4a4dcc);
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-background-radius: 25px;
-    -fx-padding: 10px 20px;
+    -fx-background-radius: 6px;
+    -fx-padding: 8px 16px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(three-pass-box, rgba(166, 74, 201, 0.5), 5, 0, 0, 1);
+    -fx-effect: dropshadow(three-pass-box, rgba(93, 95, 239, 0.3), 5, 0, 0, 1);
+}
+
+.button.active-tab {
+    -fx-background-color: linear-gradient(to bottom, #3c8cb1, #4584d7);
+    -fx-border-color: #2a7ae9;
+    -fx-border-width: 0 0 2 0;
 }
 
 .button:hover {
-    -fx-background-color: linear-gradient(to bottom, #c06ef2, #a64ac9);
-    -fx-effect: dropshadow(three-pass-box, rgba(166, 74, 201, 0.8), 8, 0, 0, 2);
-    -fx-scale-x: 1.05;
-    -fx-scale-y: 1.05;
+    -fx-background-color: linear-gradient(to bottom, #6b6df5, #595bdd);
+    -fx-effect: dropshadow(three-pass-box, rgba(107, 109, 245, 0.4), 8, 0, 0, 2);
 }
 
 .button:pressed {
-    -fx-background-color: linear-gradient(to bottom, #8d3cb1, #a64ac9);
+    -fx-background-color: linear-gradient(to bottom, #4a4dcc, #5d5fef);
+}
+
+/* Поля ввода */
+.text-field, .password-field {
+    -fx-background-color: rgba(30, 35, 50, 0.8);
+    -fx-text-fill: white;
+    -fx-border-color: rgba(100, 110, 140, 0.5);
+    -fx-border-radius: 4px;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #5d5fef;
+    -fx-effect: dropshadow(three-pass-box, rgba(93, 95, 239, 0.3), 5, 0, 0, 1);
+}
+
+/* Стили для вкладок */
+.button-tab {
+    -fx-background-color: linear-gradient(to bottom, #2a2a4a, #1e1e3a);
+    -fx-text-fill: #b3b3b3;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px 10px 0 0;
+    -fx-padding: 8px 20px;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-width: 1px 1px 0 1px;
+    -fx-border-radius: 10px 10px 0 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 1);
+}
+
+.button-tab:hover {
+    -fx-background-color: linear-gradient(to bottom, #3a3a5a, #2e2e4a);
+    -fx-text-fill: white;
+}
+
+.button-tab:selected {
+    -fx-background-color: linear-gradient(to bottom, #4a6ec9, #3c48b1);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(74, 118, 201, 0.5), 5, 0, 0, 2);
+}
+
+.button-tab:pressed {
+    -fx-background-color: linear-gradient(to bottom, #3c8cb1, #4584d7);
     -fx-scale-x: 0.98;
     -fx-scale-y: 0.98;
 }
 
-.button-danger {
-    -fx-background-color: linear-gradient(to bottom, #e94560, #d13652);
+/* Разделители и границы */
+.separator {
+    -fx-background-color: rgba(100, 110, 140, 0.2);
 }
 
-.button-danger:hover {
-    -fx-background-color: linear-gradient(to bottom, #ff6b81, #e94560);
-}
-
-/* Контейнер для кнопок */
-.button-container {
-    -fx-spacing: 15px;
-    -fx-padding: 15px;
-    -fx-alignment: CENTER;
-}
-
-/* Фикс для заполнения пустого пространства */
-.table-view *.scroll-bar *.increment-button,
-.table-view *.scroll-bar *.decrement-button {
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-    -fx-background-insets: 0;
-    -fx-padding: 0;
-    -fx-shape: null;
+/* Акцентные элементы */
+.accent {
+    -fx-text-fill: #5d5fef;
+    -fx-font-weight: bold;
 }

@@ -1,6 +1,7 @@
 package passwordmanager.DAO;
 
 import passwordmanager.dto.ServiceDTO;
+import passwordmanager.dto.TableServiceDTO;
 import passwordmanager.models.Service;
 import passwordmanager.utils.AESEncryptor;
 
@@ -85,6 +86,28 @@ public class ServicesDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public List<TableServiceDTO> getAllServicesForTable(int userId){
+        String sql = "SELECT id, service_name, username FROM services WHERE user_id=?";
+
+        List<TableServiceDTO> services = new ArrayList<>();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(1,userId);
+
+            try(ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    services.add(new TableServiceDTO(
+                            resultSet.getInt("id"),
+                            resultSet.getString("service_name"),
+                            resultSet.getString("username")
+                    ));
+                }
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return services;
     }
 
     public List<ServiceDTO> getAllServices(int userId) {

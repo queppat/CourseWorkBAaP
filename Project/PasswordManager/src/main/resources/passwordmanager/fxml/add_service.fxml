@@ -10,20 +10,25 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" stylesheets="@../styles/addService.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passwordmanager.controllers.AddServiceController">
    <children>
-      <TextField fx:id="serviceNameField" layoutX="155.0" layoutY="111.0" promptText="Введите название" />
-      <TextField fx:id="usernameField" layoutX="155.0" layoutY="190.0" promptText="Введите имя" />
-      <PasswordField fx:id="servicePasswordField" layoutX="154.0" layoutY="267.0" prefHeight="46.0" prefWidth="232.0" promptText="Введите пароль" />
-      <TextField fx:id="visibleServicePasswordField" layoutX="154.0" layoutY="267.0" prefHeight="46.0" prefWidth="232.0" styleClass="text-field-for-password" visible="false" />
+      <TextField fx:id="serviceNameField" layoutX="155.0" layoutY="111.0" prefHeight="46.0" prefWidth="200.0" promptText="Введите название" />
+      <TextField fx:id="usernameField" layoutX="155.0" layoutY="190.0" prefHeight="46.0" prefWidth="200.0" promptText="Введите имя" />
+      <PasswordField fx:id="servicePasswordField" layoutX="142.0" layoutY="267.0" prefHeight="46.0" prefWidth="225.0" promptText="Введите пароль" />
+      <TextField fx:id="visibleServicePasswordField" layoutX="142.0" layoutY="267.0" prefHeight="46.0" prefWidth="225.0" styleClass="text-field-for-password" visible="false" />
       <TextField fx:id="URLField" layoutX="137.0" layoutY="358.0" prefHeight="46.0" prefWidth="244.0" promptText="Введите ссылку" />
       <Button fx:id="addServiceButton" layoutX="154.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleAddServiceButtonAction" text="Сохранить" />
       <Label layoutX="181.0" layoutY="164.0" text="Имя пользователя" />
-      <Label layoutX="223.0" layoutY="242.0" text="Пароль" />
+      <Label layoutX="224.0" layoutY="243.0" text="Пароль" />
       <Label layoutX="142.0" layoutY="20.0" styleClass="title-label" text="Новый сервис" />
       <Label layoutX="211.0" layoutY="332.0" text="Сайт (URL)" />
       <Label layoutX="181.0" layoutY="81.0" text="Название сервиса" />
-      <ImageView fx:id="eyeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="321.0" layoutY="277.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="eyeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="305.0" layoutY="277.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/close-purple-eye.png" />
          </image></ImageView>
+      <ImageView fx:id="generateIcon" fitHeight="25.0" fitWidth="25.0" layoutX="336.0" layoutY="277.0" onMouseClicked="#handleGeneratePasswordAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/generate-icon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

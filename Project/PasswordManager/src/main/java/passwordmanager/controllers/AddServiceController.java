@@ -7,10 +7,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import passwordmanager.DAO.ServicesDAO;
 import passwordmanager.models.Service;
 import passwordmanager.utils.*;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -27,6 +29,8 @@ public class AddServiceController {
     private TextField visibleServicePasswordField;
     @FXML
     private ImageView eyeIcon;
+    @FXML
+    private ImageView generateIcon;
     @FXML
     private TextField URLField;
     @FXML
@@ -109,6 +113,19 @@ public class AddServiceController {
             }
        } catch (Exception e){
             AlertUtils.showErrorAlert("Ошибка при входе в систему");
+            e.printStackTrace();
+        }
+    }
+
+    //TODO Добавить дополнительную реализацию main окна. Тут нужно при открытии генератора добавить "Использовать этот пароль"
+    // и переместиться в предыдущее окно и автоматически вставить пароль. (Возможно будет запарно).
+    @FXML
+    public void handleGeneratePasswordAction() {
+        try{
+            Stage stage = (Stage) generateIcon.getScene().getWindow();
+            WindowManager.defaultSwitchScene(stage, "/passwordmanager/fxml/password_generator.fxml","Генератор");
+        } catch (IOException e){
+            AlertUtils.showErrorAlert("Ошибка перехода в Генератор");
             e.printStackTrace();
         }
     }

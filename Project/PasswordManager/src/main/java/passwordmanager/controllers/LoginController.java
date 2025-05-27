@@ -89,9 +89,6 @@ public class LoginController {
             if(superUser.verifyMasterPassword(masterPassword)){
                 UserSession.getInstance().login(superUser.getId(), masterPassword);
 
-//                System.out.println("User ID from login: " + superUser.getId());
-//                System.out.println("Master password length: " + masterPassword.length());
-
                 AlertUtils.showSuccessAlert("Вход выполнен успешно");
 
                 Stage stage = (Stage) loginButton.getScene().getWindow();

@@ -38,7 +38,7 @@ public class ServicesDAO {
     public boolean addService(Service service) {
         try {
 
-            String sql = "INSERT INTO services (user_id, service_name ,username, encrypted_password, URL, salt) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO services (user_id, service_name ,username, encrypted_password, url, salt) VALUES (?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setInt(1, service.getUserId());
@@ -110,8 +110,33 @@ public class ServicesDAO {
         return services;
     }
 
+    public ServiceDTO getServiceDTOById(int id){
+        String sql = "SELECT id, service_name, username, encrypted_password, url FROM services WHERE id=?";
+
+        ServiceDTO serviceDTO = null;
+
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(1, id);
+
+            try(ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    serviceDTO = new ServiceDTO(
+                            resultSet.getInt("id"),
+                            resultSet.getString("service_name"),
+                            resultSet.getString("username"),
+                            resultSet.getString("encrypted_password"),
+                            resultSet.getString("url")
+                    );
+                }
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return serviceDTO;
+    }
+
     public List<ServiceDTO> getAllServices(int userId) {
-        String sql = "SELECT id, service_name, username, encrypted_password FROM services WHERE user_id=?";
+        String sql = "SELECT id, service_name, username, encrypted_password, url FROM services WHERE user_id=?";
 
         List<ServiceDTO> services = new ArrayList<>();
         try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
@@ -123,7 +148,8 @@ public class ServicesDAO {
                             resultSet.getInt("id"),
                             resultSet.getString("service_name"),
                             resultSet.getString("username"),
-                            resultSet.getString("encrypted_password")
+                            resultSet.getString("encrypted_password"),
+                            resultSet.getString("url")
                     ));
                 }
             }

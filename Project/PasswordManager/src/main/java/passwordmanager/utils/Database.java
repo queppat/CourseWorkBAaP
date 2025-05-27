@@ -11,7 +11,6 @@ import java.util.Properties;
 public class Database {
     private static final Properties properties = new Properties();
 
-    private Long id;
     static {
         try (InputStream input = Database.class.getClassLoader().getResourceAsStream("application.properties")) {
             if (input == null) {
@@ -22,6 +21,7 @@ public class Database {
             throw new RuntimeException("Ошибка загрузки application.properties", e);
         }
     }
+
     public static Connection getConnection() throws SQLException {
         String url = properties.getProperty("db.url");
         String user = properties.getProperty("db.user");

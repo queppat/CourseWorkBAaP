@@ -2,9 +2,11 @@ package passwordmanager.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import passwordmanager.DAO.ServicesDAO;
 import passwordmanager.dto.ServiceDTO;
+import passwordmanager.dto.TableServiceDTO;
 import passwordmanager.utils.AlertUtils;
 import passwordmanager.utils.Database;
 import passwordmanager.utils.UserSession;
@@ -18,12 +20,14 @@ import java.util.List;
 
 public class ServiceStorageController {
 
-    @FXML private TableView<ServiceDTO> serviceTable;
-    @FXML private TableColumn<ServiceDTO, String> serviceColumn;
-    @FXML private TableColumn<ServiceDTO, String> usernameColumn;
+    @FXML private TableView<TableServiceDTO> serviceTable;
+    @FXML private TableColumn<TableServiceDTO, String> serviceColumn;
+    @FXML private TableColumn<TableServiceDTO, String> usernameColumn;
 
     private ServicesDAO servicesDAO;
     private final UserSession session = UserSession.getInstance();
+
+    private boolean canChange = true;
 
     @FXML
     public void initialize() {
@@ -34,10 +38,36 @@ public class ServiceStorageController {
             e.printStackTrace();
         }
         updateListOfServices();
+        setupTableRowClickHandler();
+    }
+
+
+    private void setupTableRowClickHandler() {
+        serviceTable.setRowFactory(tv -> {
+            TableRow<TableServiceDTO> row = new TableRow<>();
+            row.setOnMouseClicked(this::handleTableRowClick);
+            return row;
+        });
+    }
+
+    private void handleTableRowClick(MouseEvent event) {
+        try {
+            if (canChange) {
+                canChange = false;
+                TableRow<TableServiceDTO> row = (TableRow<TableServiceDTO>) event.getSource();
+                if (!row.isEmpty()) {
+                    TableServiceDTO selected = row.getItem();
+                    Stage stage = (Stage) row.getScene().getWindow();
+                    WindowManager.slideReplaceWindowFromRight(stage,"/passwordmanager/fxml/service_information.fxml", "Информация", selected.getId());
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateListOfServices() {
-        List<ServiceDTO> servicesList = servicesDAO.getAllServices(session.getUserId());
+        List<TableServiceDTO> servicesList = servicesDAO.getAllServicesForTable(session.getUserId());
         serviceTable.getItems().setAll(servicesList);
     }
 
@@ -50,20 +80,5 @@ public class ServiceStorageController {
        } catch (IOException e) {
             e.printStackTrace();
        }
-    }
-
-    @FXML
-    private void showSelectedService() {
-        //TODO открыть безопасное окно для копирования
-        ServiceDTO selected = serviceTable.getSelectionModel().getSelectedItem();
-        if (selected != null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Пароль");
-            alert.setHeaderText("Пароль для " + selected.getServiceName());
-            alert.setContentText(selected.getPassword());
-            alert.showAndWait();
-        } else {
-            AlertUtils.showErrorAlert("Выберите запись для просмотра пароля");
-        }
     }
 }

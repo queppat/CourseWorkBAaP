@@ -35,6 +35,8 @@ public class AddServiceController {
     private TextField URLField;
     @FXML
     private Button addServiceButton;
+    @FXML
+    private ImageView backIcon;
 
     private ServicesDAO servicesDAO;
 
@@ -50,7 +52,6 @@ public class AddServiceController {
 
             visibleServicePasswordField.textProperty().bindBidirectional(servicePasswordField.textProperty());
 
-            Platform.runLater(() -> usernameField.requestFocus());
 
             UIBehaviorUtils.setupFieldNavigation(serviceNameField, usernameField);
             UIBehaviorUtils.setupFieldNavigation(usernameField, servicePasswordField);
@@ -71,6 +72,16 @@ public class AddServiceController {
                 openedEyeIcon,
                 closedEyeIcon
         );
+    }
+
+    @FXML
+    public void handleBackAction() {
+        try {
+            Stage stage = (Stage) backIcon.getScene().getWindow();
+            WindowManager.slideReplaceWindowFromLeft(stage, "/passwordmanager/fxml/main.fxml", "KeyForge",null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -109,7 +120,12 @@ public class AddServiceController {
             );
             if(servicesDAO.addService(service)){
                 AlertUtils.showSuccessAlert("Сервис успешно добавлен");
-                WindowManager.closeWindow(addServiceButton);
+                try {
+                    Stage stage = (Stage) addServiceButton.getScene().getWindow();
+                    WindowManager.slideReplaceWindowFromLeft(stage, "/passwordmanager/fxml/main.fxml", "KeyForge",null);
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
             }
        } catch (Exception e){
             AlertUtils.showErrorAlert("Ошибка при входе в систему");
@@ -123,7 +139,7 @@ public class AddServiceController {
     public void handleGeneratePasswordAction() {
         try{
             Stage stage = (Stage) generateIcon.getScene().getWindow();
-            WindowManager.defaultSwitchScene(stage, "/passwordmanager/fxml/password_generator.fxml","Генератор");
+            WindowManager.mainSwitchScene(stage, "/passwordmanager/fxml/password_generator.fxml","Генератор");
         } catch (IOException e){
             AlertUtils.showErrorAlert("Ошибка перехода в Генератор");
             e.printStackTrace();

@@ -46,9 +46,6 @@ public class LoginController {
 
             visiblePasswordField.textProperty().bindBidirectional(passwordField.textProperty());
 
-
-            Platform.runLater(() -> usernameField.requestFocus());
-
             UIBehaviorUtils.setupFieldNavigation(usernameField, passwordField);
             UIBehaviorUtils.setupFinalField(passwordField, this::handleLogin);
         } catch (SQLException e){

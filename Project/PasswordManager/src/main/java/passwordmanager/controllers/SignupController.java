@@ -60,16 +60,13 @@ public class SignupController {
         try {
             Connection connection = Database.getConnection();
             superUserDAO = new SuperUserDAO(connection);
-
-            Platform.runLater(() -> usernameField.requestFocus());
-
-            UIBehaviorUtils.setupFieldNavigation(usernameField, passwordField);
-            UIBehaviorUtils.setupFieldNavigation(passwordField, confirmPasswordField);
-            UIBehaviorUtils.setupFinalField(confirmPasswordField, this::handleSignup);
         } catch (SQLException e){
             AlertUtils.showErrorAlert("Ошибка подключения к базе данных");
             e.printStackTrace();
         }
+        UIBehaviorUtils.setupFieldNavigation(usernameField, passwordField);
+        UIBehaviorUtils.setupFieldNavigation(passwordField, confirmPasswordField);
+        UIBehaviorUtils.setupFinalField(confirmPasswordField, this::handleSignup);
     }
 
     @FXML

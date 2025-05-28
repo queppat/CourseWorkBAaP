@@ -15,7 +15,6 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 10, 0, 0, 2);
 }
 
-/* Кнопки - приятный сине-фиолетовый */
 .button {
     -fx-background-color: linear-gradient(to bottom, #5d5fef, #4a4dcc);
     -fx-text-fill: white;
@@ -50,7 +49,6 @@
     -fx-font-size: 14px;
 }
 
-/* Поля ввода */
 .password-field, .text-field-for-password {
     -fx-background-color: rgba(30, 35, 50, 0.8);
     -fx-text-fill: white;
@@ -80,12 +78,10 @@
     -fx-effect: none;
 }
 
-/* Разделители и границы */
 .separator {
     -fx-background-color: rgba(100, 110, 140, 0.2);
 }
 
-/* Акцентные элементы */
 .accent {
     -fx-text-fill: #5d5fef;
     -fx-font-weight: bold;

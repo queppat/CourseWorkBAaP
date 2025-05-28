@@ -18,7 +18,7 @@ public class UserSession {
     private static final UserSession instance = new UserSession();
     private ScheduledExecutorService scheduler;
     private ScheduledFuture<?> logoutTask;
-    private static final int INACTIVITY_TIMEOUT_MINUTES = 5;
+    private static final int INACTIVITY_TIMEOUT_MINUTES = 3;
 
     private int userId = -1;
     private String masterPassword;
@@ -153,6 +153,25 @@ public class UserSession {
 
         Platform.runLater(() -> {
             AlertUtils.showWarningAlert("Ваша сессия завершена из-за неактивности!");
+            try {
+                WindowManager.openNewWindow("/passwordmanager/fxml/auth.fxml", "KeyForge", 500, 500, false);
+                closeAllWindows();
+            } catch (IOException e) {
+                System.err.println("Ошибка при открытии окна авторизации: " + e.getMessage());
+            }
+        });
+
+        cancelLogoutTask();
+    }
+
+    public void quietLogout() {
+        if (userId == -1) return;
+
+        masterPassword = null;
+        userId = -1;
+        System.out.println("Сессия завершена (тихий режим)");
+
+        Platform.runLater(() -> {
             try {
                 WindowManager.openNewWindow("/passwordmanager/fxml/auth.fxml", "KeyForge", 500, 500, false);
                 closeAllWindows();

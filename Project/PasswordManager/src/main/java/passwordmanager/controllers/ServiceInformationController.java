@@ -1,6 +1,7 @@
 package passwordmanager.controllers;
 
 import javafx.application.HostServices;
+import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -107,7 +108,7 @@ public class ServiceInformationController {
     public void handleEditServiceAction() {
         try {
             Stage stage = (Stage) editButton.getScene().getWindow();
-            WindowManager.mainSwitchScene(stage, "/passwordmanager/fxml/edit_service_information.fxml", "Изменение информации");
+            WindowManager.slideReplaceWindowFromRight(stage, "/passwordmanager/fxml/edit_service_information.fxml", "Изменение информации",serviceId);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -119,7 +120,7 @@ public class ServiceInformationController {
             if(canBack) {
                 canBack = false;
                 Stage stage = (Stage) backIcon.getScene().getWindow();
-                WindowManager.slideReplaceWindowFromLeft(stage, "/passwordmanager/fxml/main.fxml", "KeyForge");
+                WindowManager.slideReplaceWindowFromLeft(stage, "/passwordmanager/fxml/main.fxml", "KeyForge",null);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -134,7 +135,7 @@ public class ServiceInformationController {
             if(successfulRemove) {
                 try {
                     Stage stage = (Stage) deleteIcon.getScene().getWindow();
-                    WindowManager.slideReplaceWindowFromLeft(stage, "/passwordmanager/fxml/main.fxml", "KeyForge");
+                    WindowManager.slideReplaceWindowFromLeft(stage, "/passwordmanager/fxml/main.fxml", "KeyForge",null);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

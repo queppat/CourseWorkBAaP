@@ -12,34 +12,31 @@
     <children>
         <Label layoutX="187.0" layoutY="22.0" styleClass="title-label" text="KeyForge" />
         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="355.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="no-hover-icon">
-            <image>
-                <Image url="@../icons/AppIcon.png" />
-            </image>
-        </ImageView>
-        <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="14.0" onMouseClicked="#handleBackAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
-            <image>
-                <Image url="@../icons/back-icon.png" />
-            </image>
+            <Image url="@../icons/AppIcon.png" />
         </ImageView>
         <ImageView fx:id="deleteIcon" fitHeight="35.0" fitWidth="40.0" layoutX="489.0" layoutY="547.0" onMouseClicked="#handleDeleteServiceAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
-            <image>
-                <Image url="@../icons/delete-icon.png" />
-            </image>
+            <Image url="@../icons/delete-icon.png" />
         </ImageView>
-        <Button fx:id="editButton" layoutX="24.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleEditServiceAction" text="Изменить" />
+        <Button fx:id="saveButton" layoutX="24.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleSaveServiceAction" text="Сохранить" />
         <Label layoutX="163.0" layoutY="129.0" text="Название сервиса" />
-        <TextField fx:id="serviceNameField" editable="false" layoutX="163.0" layoutY="161.0" prefHeight="37.0" prefWidth="229.0" styleClass="text-field" />
+        <TextField fx:id="serviceNameField" layoutX="163.0" layoutY="161.0" prefHeight="37.0" prefWidth="229.0" promptText="Введите название" styleClass="text-field" />
         <Label layoutX="161.0" layoutY="227.0" text="Имя пользователя" />
-        <TextField fx:id="serviceUsernameField" editable="false" layoutX="163.0" layoutY="256.0" prefHeight="37.0" prefWidth="229.0" />
+        <TextField fx:id="serviceUsernameField" layoutX="163.0" layoutY="256.0" prefHeight="37.0" prefWidth="229.0" promptText="Введите имя" />
         <Label layoutX="163.0" layoutY="303.0" text="Пароль" />
-        <PasswordField fx:id="servicePasswordField" editable="false" layoutX="163.0" layoutY="330.0" prefHeight="38.0" prefWidth="229.0" styleClass="password-field" />
-        <TextField fx:id="visibleServicePasswordField" editable="false" layoutX="163.0" layoutY="330.0" prefHeight="38.0" prefWidth="229.0" styleClass="text-field-for-password" visible="false" />
+        <PasswordField fx:id="servicePasswordField" layoutX="163.0" layoutY="330.0" prefHeight="38.0" prefWidth="229.0" promptText="Введите пароль" styleClass="password-field" />
+        <TextField fx:id="visibleServicePasswordField" layoutX="163.0" layoutY="330.0" prefHeight="38.0" prefWidth="229.0" promptText="Введите пароль" styleClass="text-field-for-password" visible="false" />
         <Label layoutX="161.0" layoutY="433.0" text="Сайт" />
-        <TextField fx:id="urlField" editable="false" layoutX="163.0" layoutY="463.0" prefHeight="38.0" prefWidth="229.0" styleClass="text-field-for-url" />
+        <TextField fx:id="urlField" layoutX="163.0" layoutY="463.0" prefHeight="38.0" prefWidth="229.0" promptText="Введите ссылку" styleClass="text-field-for-url" />
         <ImageView fx:id="eyeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="359.0" layoutY="337.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true" styleClass="icon">
             <image>
                 <Image url="@../icons/close-purple-eye.png" />
             </image>
         </ImageView>
+      <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" layoutX="16.0" layoutY="16.0" onMouseClicked="#handleBackAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
+         <image>
+            <Image url="@../icons/back-icon.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="cancelButton" layoutX="149.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleBackAction" text="Отмена" />
     </children>
 </AnchorPane>

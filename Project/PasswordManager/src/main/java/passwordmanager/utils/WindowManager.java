@@ -12,6 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.Screen;
 import javafx.util.Duration;
+import passwordmanager.controllers.EditServiceInformationController;
 import passwordmanager.controllers.ServiceInformationController;
 import passwordmanager.dto.TableServiceDTO;
 
@@ -119,6 +120,9 @@ public class WindowManager {
         if (controller instanceof ServiceInformationController) {
             ((ServiceInformationController) controller).setServiceId((Integer) data);
         }
+        if(controller instanceof EditServiceInformationController) {
+            ((EditServiceInformationController) controller).setServiceID((Integer) data);
+        }
 
         List<String> newStyles = newContent.getStylesheets();
 
@@ -162,13 +166,20 @@ public class WindowManager {
         parallelTransition.play();
     }
 
-    public static void slideReplaceWindowFromLeft(Stage currentStage, String fxmlPath, String title) throws IOException {
-        // 1. Сохраняем текущий root
+    public static void slideReplaceWindowFromLeft(Stage currentStage, String fxmlPath, String title, Object data) throws IOException {
         Parent previousContent = currentStage.getScene().getRoot();
 
         // 2. Загружаем новое содержимое
         FXMLLoader loader = new FXMLLoader(WindowManager.class.getResource(fxmlPath));
         Parent newContent = loader.load();
+
+        Object controller = loader.getController();
+        if (controller instanceof ServiceInformationController) {
+            ((ServiceInformationController) controller).setServiceId((Integer) data);
+        }
+        if(controller instanceof EditServiceInformationController) {
+            ((EditServiceInformationController) controller).setServiceID((Integer) data);
+        }
 
         List<String> newStyles = newContent.getStylesheets();
 
@@ -208,8 +219,6 @@ public class WindowManager {
 
         parallelTransition.play();
     }
-
-
 
     public static void closeWindow(Node node) {
         Stage stage = (Stage) node.getScene().getWindow();

@@ -1,11 +1,9 @@
-/* Основной фон */
 .root {
     -fx-background-color: linear-gradient(to bottom, #1a1a2e, #16213e);
     -fx-font-family: 'Segoe UI', Arial, sans-serif;
     -fx-padding: 40px;
 }
 
-/* Стиль заголовка */
 .title-label {
     -fx-font-size: 28px;
     -fx-font-weight: bold;
@@ -13,7 +11,6 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 10, 0, 0, 2);
 }
 
-/* Контейнер для кнопок */
 .button-container {
     -fx-background-color: rgba(255, 255, 255, 0.05);
     -fx-background-radius: 15px;
@@ -24,7 +21,6 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 15, 0, 0, 0);
 }
 
-/* Общий стиль кнопок */
 .auth-button {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
@@ -37,7 +33,6 @@
     -fx-transition: all 0.3s;
 }
 
-/* Кнопка "Войти" */
 #loginButton {
     -fx-background-color: linear-gradient(to right, #0f3460, #16213e);
     -fx-border-color: #e94560;
@@ -51,7 +46,6 @@
     -fx-scale-y: 1.05;
 }
 
-/* Кнопка "Создать пользователя" */
 #signupButton {
     -fx-background-color: linear-gradient(to right, #533483, #2d00a3);
     -fx-border-color: #a64ac9;

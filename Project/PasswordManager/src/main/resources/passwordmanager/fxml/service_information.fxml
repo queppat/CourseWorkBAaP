@@ -16,11 +16,6 @@
             <Image url="@../icons/AppIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="14.0" onMouseClicked="#handleBackAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
-         <image>
-            <Image url="@../icons/back-icon.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="deleteIcon" fitHeight="35.0" fitWidth="40.0" layoutX="489.0" layoutY="547.0" onMouseClicked="#handleDeleteServiceAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
          <image>
             <Image url="@../icons/delete-icon.png" />
@@ -36,24 +31,29 @@
       <TextField fx:id="visibleServicePasswordField" editable="false" layoutX="163.0" layoutY="330.0" prefHeight="38.0" prefWidth="229.0" styleClass="text-field-for-password" visible="false" />
       <Label layoutX="161.0" layoutY="433.0" text="Сайт" />
       <TextField fx:id="urlField" editable="false" layoutX="163.0" layoutY="463.0" prefHeight="38.0" prefWidth="229.0" styleClass="text-field-for-url" />
-      <ImageView fx:id="usernameCopyIcon" fitHeight="25.0" fitWidth="25.0" layoutX="360.0" layoutY="262.0" onMouseClicked="#handleCopyUsernameAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
+      <ImageView fx:id="usernameCopyIcon" fitHeight="24.0" fitWidth="24.0" layoutX="361.0" layoutY="263.0" onMouseClicked="#handleCopyUsernameAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
          <image>
             <Image url="@../icons/copy.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="passwordCopyIcon" fitHeight="25.0" fitWidth="25.0" layoutX="360.0" layoutY="337.0" onMouseClicked="#handleCopyPasswordAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
+      <ImageView fx:id="passwordCopyIcon" fitHeight="24.0" fitWidth="24.0" layoutX="361.0" layoutY="337.0" onMouseClicked="#handleCopyPasswordAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
          <image>
             <Image url="@../icons/copy.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="eyeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="329.0" layoutY="337.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true" styleClass="icon">
+      <ImageView fx:id="eyeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="331.0" layoutY="337.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true" styleClass="icon">
          <image>
             <Image url="@../icons/close-purple-eye.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="linkIcon" fitHeight="25.0" fitWidth="25.0" layoutX="359.0" layoutY="469.0" onMouseClicked="#handleLinkAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
+      <ImageView fx:id="linkIcon" fitHeight="24.0" fitWidth="24.0" layoutX="360.0" layoutY="470.0" onMouseClicked="#handleLinkAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
          <image>
             <Image url="@../icons/link.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" layoutX="16.0" layoutY="16.0" onMouseClicked="#handleBackAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
+         <image>
+            <Image url="@../icons/back-icon.png" />
          </image>
       </ImageView>
    </children>

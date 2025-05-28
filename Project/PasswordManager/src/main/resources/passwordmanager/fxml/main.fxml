@@ -12,7 +12,7 @@
    <Button fx:id="passwordGenerateButton" layoutX="275.0" layoutY="552.0" mnemonicParsing="false" onAction="#showGenerator" prefHeight="45.0" prefWidth="266.0" styleClass="button-tab" text="Генератор паролей" />
    <Label layoutX="170.0" layoutY="27.0" prefHeight="36.0" prefWidth="152.0" styleClass="title-label" text="KeyForge" />
    <StackPane fx:id="contentPane" layoutY="80.0" prefHeight="438.0" prefWidth="550.0" />
-   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="329.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" layoutX="329.0" layoutY="20.0" onMouseClicked="#handleBackToAuthAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
       <image>
          <Image url="@../icons/AppIcon.png" />
       </image>

@@ -4,7 +4,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import passwordmanager.utils.AlertUtils;
+import passwordmanager.utils.UserSession;
+import passwordmanager.utils.WindowManager;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +24,9 @@ public class MainController {
     @FXML
     private Button passwordGenerateButton;
 
+    @FXML
+    private ImageView backIcon;
+
     private final Map<String, Parent> screens = new HashMap<>();
 
     @FXML
@@ -26,6 +35,14 @@ public class MainController {
         loadScreen("generator", "/passwordmanager/fxml/password_generator.fxml");
 
         setScreen("storage");
+    }
+
+    @FXML
+    public void handleBackToAuthAction() {
+        boolean confirmed = AlertUtils.showConfirmationDialog("Вы уверены, что хотите выйти из аккаунта?");
+        if(confirmed) {
+            UserSession.getInstance().quietLogout();
+        }
     }
 
     private void loadScreen(String name, String fxmlFile) {

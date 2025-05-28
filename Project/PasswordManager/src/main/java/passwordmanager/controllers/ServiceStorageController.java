@@ -20,9 +20,15 @@ import java.util.List;
 
 public class ServiceStorageController {
 
-    @FXML private TableView<TableServiceDTO> serviceTable;
-    @FXML private TableColumn<TableServiceDTO, String> serviceColumn;
-    @FXML private TableColumn<TableServiceDTO, String> usernameColumn;
+    @FXML
+    private TableView<TableServiceDTO> serviceTable;
+    @FXML
+    private TableColumn<TableServiceDTO, String> serviceColumn;
+    @FXML
+    private TableColumn<TableServiceDTO, String> usernameColumn;
+
+    @FXML
+    private Button addServiceButton;
 
     private ServicesDAO servicesDAO;
     private final UserSession session = UserSession.getInstance();
@@ -74,9 +80,9 @@ public class ServiceStorageController {
     @FXML
     private void handleAddPService() {
        try {
-            Stage addServiceStage = WindowManager.openNewWindow("/passwordmanager/fxml/add_service.fxml",
-                    "Добавление нового сервиса", 500, 500, false);
-            addServiceStage.setOnHidden(event -> updateListOfServices());
+           Stage stage = (Stage) addServiceButton.getScene().getWindow();
+           WindowManager.slideReplaceWindowFromRight(stage,"/passwordmanager/fxml/add_service.fxml",
+                    "Добавление нового сервиса",null);
        } catch (IOException e) {
             e.printStackTrace();
        }

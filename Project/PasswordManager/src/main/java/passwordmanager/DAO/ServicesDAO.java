@@ -88,6 +88,25 @@ public class ServicesDAO {
         }
     }
 
+    public boolean updateServiceById(int serviceId, String newServiceName, String newUsername,
+                                     String newEncryptedPassword, String newUrl, String newSalt) {
+        String sql = "UPDATE services SET service_name = ?, username = ?, encrypted_password = ?, url = ?, salt = ? WHERE id = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, newServiceName);
+            stmt.setString(2, newUsername);
+            stmt.setString(3, newEncryptedPassword);
+            stmt.setString(4, newUrl);
+            stmt.setString(5, newSalt);
+            stmt.setInt(6, serviceId);
+
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public List<TableServiceDTO> getAllServicesForTable(int userId){
         String sql = "SELECT id, service_name, username FROM services WHERE user_id=?";
 

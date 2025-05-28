@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="400.0" prefWidth="600.0" spacing="15" style="-fx-padding: 15px;" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passwordmanager.controllers.ServiceStorageController">
-   <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddPService" prefHeight="36.0" prefWidth="241.0" text="Добавить новый сервис" />
+   <Button fx:id="addServiceButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleAddPService" prefHeight="36.0" prefWidth="241.0" text="Добавить новый сервис" />
             <TableView fx:id="serviceTable" style="-fx-max-height: 400px;">
                 <columns>
                     <TableColumn fx:id="serviceColumn" prefWidth="272.3081741333008" text="Сервис">

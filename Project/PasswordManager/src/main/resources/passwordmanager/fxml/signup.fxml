@@ -10,27 +10,27 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" stylesheets="@../styles/signup.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passwordmanager.controllers.SignupController">
-   <Label alignment="CENTER" layoutX="157.0" layoutY="89.0" prefHeight="76.0" prefWidth="185.0" styleClass="main-label" text="Регистрация" textAlignment="CENTER">
+   <ImageView fx:id="backIcon" fitHeight="70.0" fitWidth="70.0" layoutX="216.0" layoutY="14.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../icons/AppIcon.png" />
+   </ImageView>
+   <Label alignment="CENTER" layoutX="157.0" layoutY="81.0" prefHeight="76.0" prefWidth="185.0" styleClass="main-label" text="Регистрация" textAlignment="CENTER">
       <font>
          <Font size="25.0" />
       </font>
    </Label>
-   <Button fx:id="signupButton" layoutX="129.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="48.0" prefWidth="258.0" text="Зарегистрироваться" />
-   <TextField fx:id="usernameField" layoutX="140.0" layoutY="195.0" prefHeight="46.0" prefWidth="228.0" promptText="Введите имя" stylesheets="@../styles/login.css" />
-   <Label layoutX="174.0" layoutY="159.0" prefHeight="25.0" prefWidth="151.0" text="Имя пользователя" />
-   <Label layoutX="190.0" layoutY="247.0" prefHeight="19.0" prefWidth="128.0" text="Мастер-пароль" />
-   <Label layoutX="161.0" layoutY="324.0" prefHeight="19.0" prefWidth="200.0" text="Подтверждение пароля" />
-   <PasswordField fx:id="passwordField" layoutX="141.0" layoutY="273.0" prefHeight="46.0" prefWidth="258.0" promptText="Введите пароль" />
-   <PasswordField fx:id="confirmPasswordField" layoutX="142.0" layoutY="350.0" prefHeight="46.0" prefWidth="258.0" promptText="Подтвердите пароль" />
-   <ImageView fx:id="backIcon" fitHeight="75.0" fitWidth="75.0" layoutX="213.0" layoutY="14.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../icons/AppIcon.png" />
-   </ImageView>
-   <TextField fx:id="visiblePasswordField" layoutX="141.0" layoutY="273.0" prefHeight="46.0" prefWidth="258.0" styleClass="text-field-for-password" visible="false" />
-   <TextField fx:id="visibleConfirmPasswordField" layoutX="142.0" layoutY="350.0" prefHeight="46.0" prefWidth="258.0" styleClass="text-field-for-password" visible="false" />
-   <ImageView fx:id="eyeIcon" fitHeight="24.0" fitWidth="24.0" layoutX="335.0" layoutY="284.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
+   <Label layoutX="174.0" layoutY="156.0" prefHeight="25.0" prefWidth="151.0" text="Имя пользователя" />
+   <TextField fx:id="usernameField" layoutX="140.0" layoutY="185.0" prefHeight="46.0" prefWidth="228.0" promptText="Введите имя" styleClass="username-text-field" />
+   <Label layoutX="190.0" layoutY="240.0" prefHeight="19.0" prefWidth="128.0" text="Мастер-пароль" />
+   <PasswordField fx:id="passwordField" layoutX="141.0" layoutY="267.0" prefHeight="46.0" prefWidth="228.0" promptText="Введите пароль" />
+   <TextField fx:id="visiblePasswordField" layoutX="141.0" layoutY="267.0" prefHeight="46.0" prefWidth="228.0" promptText="Введите пароль" styleClass="text-field-for-password" visible="false" />
+   <Label layoutX="161.0" layoutY="321.0" prefHeight="19.0" prefWidth="200.0" text="Подтверждение пароля" />
+   <PasswordField fx:id="confirmPasswordField" layoutX="142.0" layoutY="346.0" prefHeight="46.0" prefWidth="228.0" promptText="Подтвердите пароль" />
+   <TextField fx:id="visibleConfirmPasswordField" layoutX="142.0" layoutY="346.0" prefHeight="46.0" prefWidth="228.0" promptText="Подтвердите пароль" styleClass="text-field-for-password" visible="false" />
+   <Button fx:id="signupButton" layoutX="129.0" layoutY="426.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="48.0" prefWidth="258.0" text="Зарегистрироваться" />
+   <ImageView fx:id="eyeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="335.0" layoutY="278.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
       <Image url="@../icons/close-purple-eye.png" />
    </ImageView>
-   <ImageView fx:id="confirmEyeIcon" fitHeight="24.0" fitWidth="24.0" layoutX="334.0" layoutY="361.0" onMouseClicked="#toggleConfirmPasswordVisibility" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="confirmEyeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="335.0" layoutY="356.0" onMouseClicked="#toggleConfirmPasswordVisibility" pickOnBounds="true" preserveRatio="true">
       <Image url="@../icons/close-purple-eye.png" />
    </ImageView>
 </AnchorPane>

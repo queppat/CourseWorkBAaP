@@ -22,7 +22,7 @@ public class AlertUtils {
     }
 
     public static void showWarningAlert(String message) {
-        showAlert(Alert.AlertType.WARNING, "<UNK>", null, message);
+        showAlert(Alert.AlertType.WARNING, "Предупреждение", null, message);
     }
 
     public static void showConfirmationAlert(String message) {

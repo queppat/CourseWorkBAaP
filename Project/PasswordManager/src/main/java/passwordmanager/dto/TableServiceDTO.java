@@ -5,7 +5,7 @@ public class TableServiceDTO {
     private final String serviceName;
     private final String username;
 
-    public TableServiceDTO(final int id, final String serviceName, final String username) {
+    public TableServiceDTO(int id,String serviceName, String username) {
         this.id = id;
         this.serviceName = serviceName;
         this.username = username;

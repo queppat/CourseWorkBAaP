@@ -1,7 +1,9 @@
 package passwordmanager.controllers;
 
 import javafx.application.HostServices;
+import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -9,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import passwordmanager.DAO.ServicesDAO;
 import passwordmanager.dto.ServiceDTO;
@@ -23,7 +27,7 @@ public class ServiceInformationController {
     @FXML
     private TextField serviceNameField;
     @FXML
-    private TextField usernameField;
+    private TextField serviceUsernameField;
     @FXML
     private PasswordField servicePasswordField;
     @FXML
@@ -88,7 +92,7 @@ public class ServiceInformationController {
 
         if (selectedService != null) {
             serviceNameField.setText(selectedService.getServiceName());
-            usernameField.setText(selectedService.getUsername());
+            serviceUsernameField.setText(selectedService.getUsername());
             urlField.setText(selectedService.getUrl());
 
             String decryptedPassword = servicesDAO.getDecryptedPassword(serviceId,userSession.getMasterPassword());
@@ -146,10 +150,10 @@ public class ServiceInformationController {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
 
-        content.putString(usernameField.getText());
+        content.putString(serviceUsernameField.getText());
         clipboard.setContent(content);
 
-        System.out.println(" Текст скопирован: " + usernameField.getText());
+        System.out.println(" Текст скопирован: " + serviceUsernameField.getText());
     }
 
     @FXML
@@ -165,14 +169,14 @@ public class ServiceInformationController {
 
     @FXML
     public void handleLinkAction() {
-        String url = "https://" + urlField.getText();
-        HostServices hostServices = HostServicesProvider.getHostServices();
+        String url = urlField.getText();
 
-        if (hostServices != null) {
-            hostServices.showDocument(url);
-            System.out.println("✅ Открытие ссылки: " + url);
-        } else {
-            System.out.println("❌ Ошибка: HostServices не инициализирован!");
+        if (!url.startsWith("http")) {
+            url = "https://" + url;
         }
+
+        HostServices hostServices = HostServicesProvider.getHostServices();
+        hostServices.showDocument(url);
     }
+
 }

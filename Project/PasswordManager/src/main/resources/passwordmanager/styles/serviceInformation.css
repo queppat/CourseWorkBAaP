@@ -70,7 +70,7 @@
 }
 
 .text-field:focused, .password-field:focused,
-.text-field-for-password:focused, .text-field-for-username {
+.text-field-for-password:focused, .text-field-for-username:focused {
     -fx-border-color: #5d5fef;
     -fx-effect: dropshadow(three-pass-box, rgba(93, 95, 239, 0.3), 5, 0, 0, 1);
 }

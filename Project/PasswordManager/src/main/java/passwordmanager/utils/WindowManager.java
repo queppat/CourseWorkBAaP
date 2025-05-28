@@ -97,7 +97,7 @@ public class WindowManager {
         double screenWidth = screen.getBounds().getWidth();
         double screenHeight = screen.getBounds().getHeight();
 
-        double centerX = (screenWidth - width) / 2 + 400;
+        double centerX = (screenWidth - width) / 2;
         double centerY = (screenHeight - height) / 2;
 
         newStage.setX(centerX);

@@ -8,6 +8,7 @@ import javafx.scene.layout.StackPane;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MainController {
     @FXML
@@ -29,7 +30,7 @@ public class MainController {
 
     private void loadScreen(String name, String fxmlFile) {
         try {
-            Parent screen = FXMLLoader.load(getClass().getResource(fxmlFile));
+            Parent screen = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlFile)));
             screens.put(name, screen);
         } catch (IOException e) {
             System.err.println("Ошибка загрузки " + fxmlFile + ": " + e.getMessage());

@@ -15,7 +15,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 10, 0, 0, 2);
 }
 
-.button {
+.saveButton, .button {
     -fx-background-color: linear-gradient(to bottom, #5d5fef, #4a4dcc);
     -fx-text-fill: white;
     -fx-font-weight: bold;
@@ -25,19 +25,39 @@
     -fx-effect: dropshadow(three-pass-box, rgba(93, 95, 239, 0.3), 5, 0, 0, 1);
 }
 
-.button.active-tab {
-    -fx-background-color: linear-gradient(to bottom, #3c8cb1, #4584d7);
-    -fx-border-color: #2a7ae9;
-    -fx-border-width: 0 0 2 0;
-}
-
-.button:hover {
+.saveButton:hover, .button {
     -fx-background-color: linear-gradient(to bottom, #6b6df5, #595bdd);
     -fx-effect: dropshadow(three-pass-box, rgba(107, 109, 245, 0.4), 8, 0, 0, 2);
 }
 
-.button:pressed {
+.saveButton:pressed, .button {
     -fx-background-color: linear-gradient(to bottom, #4a4dcc, #5d5fef);
+}
+
+.cancelButton {
+    -fx-background-color: linear-gradient(to bottom, #121a2a, #0d1525);
+    -fx-text-fill: #6b6df5;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 6px;
+    -fx-border-color: #6b6df5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(93, 95, 239, 0.3), 5, 0, 0, 1);
+}
+
+.cancelButton:hover {
+    -fx-background-color: linear-gradient(to bottom, #f42e2e, #e42b78);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(107, 109, 245, 0.4), 8, 0, 0, 2);
+    -fx-border-color: transparent;
+}
+
+.cancelButton:pressed {
+    -fx-background-color: linear-gradient(to bottom, #f42e2e, #e42b78);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(107, 109, 245, 0.4), 8, 0, 0, 2);
+    -fx-border-color: transparent;
 }
 
 .text-field {

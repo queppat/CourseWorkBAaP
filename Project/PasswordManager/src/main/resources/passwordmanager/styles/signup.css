@@ -24,7 +24,7 @@
 }
 
 .main-label{
-    -fx-text-fill: #579bde;
+    -fx-text-fill: linear-gradient(to top, #4a8ac9, #c06ef2);
     -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
@@ -104,9 +104,6 @@
     -fx-background-radius: 25px;
     -fx-padding: 12px 30px;
     -fx-min-width: 200px;
-    -fx-border-color: #c06ef2;
-    -fx-border-width: 2px;
-    -fx-border-radius: 25px;
     -fx-cursor: hand;
     -fx-effect: dropshadow(three-pass-box, rgba(166, 74, 201, 0.5), 8, 0, 0, 2);
     -fx-transition: all 0.3s;
@@ -114,7 +111,6 @@
 
 #signupButton:hover {
     -fx-background-color: linear-gradient(to bottom, #4a8ac9, #a64ac9);
-    -fx-border-color: #d89cf7;
     -fx-effect: dropshadow(three-pass-box, rgba(166, 74, 201, 0.8), 10, 0, 0, 3);
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;

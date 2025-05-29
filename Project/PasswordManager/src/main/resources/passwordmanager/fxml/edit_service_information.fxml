@@ -8,16 +8,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="550.0" stylesheets="@../styles/serviceInformation.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passwordmanager.controllers.EditServiceInformationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="550.0" stylesheets="@../styles/editServiceInformation.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passwordmanager.controllers.EditServiceInformationController">
     <children>
         <Label layoutX="187.0" layoutY="22.0" styleClass="title-label" text="KeyForge" />
         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="355.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="no-hover-icon">
             <Image url="@../icons/AppIcon.png" />
         </ImageView>
-        <ImageView fx:id="deleteIcon" fitHeight="35.0" fitWidth="40.0" layoutX="489.0" layoutY="547.0" onMouseClicked="#handleDeleteServiceAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
+        <ImageView fx:id="deleteIcon" fitHeight="35.0" fitWidth="40.0" layoutX="483.0" layoutY="546.0" onMouseClicked="#handleDeleteServiceAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
             <Image url="@../icons/delete-icon.png" />
         </ImageView>
-        <Button fx:id="saveButton" layoutX="24.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleSaveServiceAction" text="Сохранить" />
+        <Button fx:id="saveButton" layoutX="24.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleSaveServiceAction" styleClass="saveButton" text="Сохранить" />
         <Label layoutX="163.0" layoutY="129.0" text="Название сервиса" />
         <TextField fx:id="serviceNameField" layoutX="163.0" layoutY="161.0" prefHeight="37.0" prefWidth="229.0" promptText="Введите название" styleClass="text-field" />
         <Label layoutX="161.0" layoutY="227.0" text="Имя пользователя" />
@@ -37,6 +37,6 @@
             <Image url="@../icons/back-icon.png" />
          </image>
       </ImageView>
-      <Button fx:id="cancelButton" layoutX="149.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleBackAction" text="Отмена" />
+      <Button fx:id="cancelButton" layoutX="149.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleBackAction" styleClass="cancelButton" text="Отмена" />
     </children>
 </AnchorPane>

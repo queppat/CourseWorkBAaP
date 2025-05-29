@@ -102,7 +102,7 @@ public class EditServiceInformationController {
     public void handleBackAction() {
         try {
             Stage stage = (Stage) backIcon.getScene().getWindow();
-            WindowManager.slideReplaceWindowFromLeft(stage,"/passwordmanager/fxml/service_information.fxml","Информация о сервисе",serviceId);
+            WindowManager.slideReplaceWindowFromLeft(stage,"/passwordmanager/fxml/service_information.fxml","Информация",serviceId);
         } catch (IOException e) {
             e.printStackTrace();
         }

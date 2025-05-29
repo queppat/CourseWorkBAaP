@@ -4,18 +4,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<VBox alignment="CENTER" spacing="20" stylesheets="@../styles/auth.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passwordmanager.controllers.AuthController">
-    <ImageView fitHeight="69.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../icons/AppIcon.png"/>
-    </ImageView>
-    <!-- Заголовок с тенью -->
-    <Label styleClass="title-label" text="KeyForge" />
-
-    <!-- Контейнер для кнопок -->
-    <VBox alignment="CENTER" spacing="15" styleClass="button-container">
-        <Button fx:id="loginButton" onAction="#handleLogin" styleClass="auth-button" text="Войти" />
-        <Button fx:id="signupButton" onAction="#handleSignup" styleClass="auth-button" text="Создать пользователя" />
-    </VBox>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@../styles/auth.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passwordmanager.controllers.AuthController">
+   <children>
+      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="217.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/AppIcon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="175.0" layoutY="96.0" styleClass="title-label" text="KeyForge" />
+      <AnchorPane layoutX="60.0" layoutY="169.0" prefHeight="238.0" prefWidth="384.0" styleClass="button-container">
+         <children>
+            <Button fx:id="loginButton" layoutX="82.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="auth-button" text="Войти" />
+            <Button fx:id="signupButton" layoutX="49.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="48.0" prefWidth="273.0" styleClass="auth-button" text="Создать пользователя" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,7 +1,6 @@
 package passwordmanager.utils;
 
 import javafx.animation.ParallelTransition;
-import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,11 +13,9 @@ import javafx.stage.Screen;
 import javafx.util.Duration;
 import passwordmanager.controllers.EditServiceInformationController;
 import passwordmanager.controllers.ServiceInformationController;
-import passwordmanager.dto.TableServiceDTO;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 public class WindowManager {
     public static void defaultSwitchScene(Stage stage, String fxmlPath, String title) throws IOException {
@@ -109,10 +106,8 @@ public class WindowManager {
     }
 
     public static void slideReplaceWindowFromRight(Stage currentStage, String fxmlPath, String title, Object data) throws IOException {
-        // 1. Сохраняем текущий root
         Parent previousContent = currentStage.getScene().getRoot();
 
-        // 2. Загружаем новое содержимое
         FXMLLoader loader = new FXMLLoader(WindowManager.class.getResource(fxmlPath));
         Parent newContent = loader.load();
 
@@ -126,7 +121,6 @@ public class WindowManager {
 
         List<String> newStyles = newContent.getStylesheets();
 
-        // 3. Создаем новый контейнер и временную сцену
         StackPane container = new StackPane();
         double stageWidth = currentStage.getWidth();
         double stageHeight = currentStage.getHeight() - 25;
@@ -135,14 +129,11 @@ public class WindowManager {
 
         tempScene.getStylesheets().addAll(newStyles);
 
-        // 4. Настраиваем начальное положение: новое содержимое начинает справа
         newContent.setTranslateX(currentStage.getWidth());
         container.getChildren().addAll(previousContent, newContent);
 
-        // 5. Устанавливаем временную сцену с контейнером, содержащим оба узла
         currentStage.setScene(tempScene);
 
-        // 6. Анимация: сдвигаем previousContent влево и newContent - в центр
         TranslateTransition slideOut = new TranslateTransition(Duration.millis(400), previousContent);
         slideOut.setFromX(0);
         slideOut.setToX(-currentStage.getWidth());
@@ -151,16 +142,11 @@ public class WindowManager {
         slideIn.setFromX(currentStage.getWidth());
         slideIn.setToX(0);
 
-        // 7. Запускаем анимации параллельно
         ParallelTransition parallelTransition = new ParallelTransition(slideOut, slideIn);
 
         parallelTransition.setOnFinished(e -> {
-            // 8. После анимации удаляем старый контент,
-            // оставляя в контейнере только новое содержимое.
             container.getChildren().remove(previousContent);
             currentStage.setTitle(title);
-            // Тем самым мы избегаем повторного использования newContent в другом родителе,
-            // так как временная сцена с контейнером остаётся активной.
         });
 
         parallelTransition.play();
@@ -169,7 +155,6 @@ public class WindowManager {
     public static void slideReplaceWindowFromLeft(Stage currentStage, String fxmlPath, String title, Object data) throws IOException {
         Parent previousContent = currentStage.getScene().getRoot();
 
-        // 2. Загружаем новое содержимое
         FXMLLoader loader = new FXMLLoader(WindowManager.class.getResource(fxmlPath));
         Parent newContent = loader.load();
 
@@ -183,7 +168,6 @@ public class WindowManager {
 
         List<String> newStyles = newContent.getStylesheets();
 
-        // 3. Создаем новый контейнер и временную сцену
         StackPane container = new StackPane();
         double stageWidth = currentStage.getWidth();
         double stageHeight = currentStage.getHeight() - 25;
@@ -191,14 +175,11 @@ public class WindowManager {
         Scene tempScene = new Scene(container, stageWidth, stageHeight);
         tempScene.getStylesheets().addAll(newStyles);
 
-        // 4. Настраиваем начальное положение: новое содержимое начинается слева
         newContent.setTranslateX(-stageWidth);
         container.getChildren().addAll(previousContent, newContent);
 
-        // 5. Устанавливаем временную сцену с контейнером, содержащим оба узла
         currentStage.setScene(tempScene);
 
-        // 6. Анимация: сдвигаем previousContent вправо и newContent — в центр
         TranslateTransition slideOut = new TranslateTransition(Duration.millis(400), previousContent);
         slideOut.setFromX(0);
         slideOut.setToX(stageWidth);
@@ -207,12 +188,9 @@ public class WindowManager {
         slideIn.setFromX(-stageWidth);
         slideIn.setToX(0);
 
-        // 7. Запускаем анимации параллельно
         ParallelTransition parallelTransition = new ParallelTransition(slideOut, slideIn);
 
         parallelTransition.setOnFinished(e -> {
-            // 8. После анимации удаляем старый контент,
-            // оставляя в контейнере только новое содержимое.
             container.getChildren().remove(previousContent);
             currentStage.setTitle(title);
         });

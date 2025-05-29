@@ -6,10 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import passwordmanager.utils.AlertUtils;
 import passwordmanager.utils.UserSession;
-import passwordmanager.utils.WindowManager;
 
 import java.io.IOException;
 import java.util.HashMap;

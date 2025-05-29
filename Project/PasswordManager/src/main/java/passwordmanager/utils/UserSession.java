@@ -99,7 +99,6 @@ public class UserSession {
             }
         });
 
-        // Обработка текущей сцены, если она есть
         if (stage.getScene() != null) {
             addSceneHandlers(stage.getScene());
         }

@@ -1,0 +1,54 @@
+.dialog-pane {
+    -fx-background-color: linear-gradient(to bottom, #1a1a2e, #16213e);
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.dialog-pane .content {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.dialog-pane .button {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to bottom, #6b45e9, #8136d1);
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: linear-gradient(to bottom, #8669f5, #a734f4);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0, 0, 2);
+}
+
+#yes-button, #no-button {
+    -fx-pref-width: 80px;
+    -fx-pref-height: 20px;
+    -fx-padding: 8px 16px;
+}
+
+#yes-button {
+    -fx-background-color: linear-gradient(to bottom, #6330b3, #3586e5);
+    -fx-border-radius: 5px;
+    -fx-text-fill: #262a2a;
+}
+
+#no-button {
+    -fx-background-color: linear-gradient(to bottom, #1a1a2e, #16213e);
+    -fx-text-fill: #3586e5;
+    -fx-border-radius: 5px;
+    -fx-border-color: #3586e5;
+}
+
+#yes-button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0, 0, 2);
+}
+
+#no-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #6330b3, #3586e5);
+    -fx-text-fill: #262a2a;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0, 0, 2);
+    -fx-border-color: transparent;
+}
+

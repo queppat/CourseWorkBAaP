@@ -1,10 +1,7 @@
 package passwordmanager.controllers;
 
 import javafx.application.HostServices;
-import javafx.application.Platform;
-import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -12,8 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import passwordmanager.DAO.ServicesDAO;
 import passwordmanager.dto.ServiceDTO;

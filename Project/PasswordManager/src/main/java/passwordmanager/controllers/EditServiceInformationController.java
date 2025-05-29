@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Objects;
-//TODO посмотреть названия окошек, сверить чтобы они были одинаковые
+
 public class EditServiceInformationController {
     @FXML
     private TextField serviceNameField;

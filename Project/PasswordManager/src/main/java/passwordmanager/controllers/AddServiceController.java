@@ -1,6 +1,5 @@
 package passwordmanager.controllers;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -135,6 +134,7 @@ public class AddServiceController {
 
     //TODO Добавить дополнительную реализацию main окна. Тут нужно при открытии генератора добавить "Использовать этот пароль"
     // и переместиться в предыдущее окно и автоматически вставить пароль. (Возможно будет запарно).
+    // можно использовать левый свайп и передать туда пароль, дописать метод в windowManager.
     @FXML
     public void handleGeneratePasswordAction() {
         try{

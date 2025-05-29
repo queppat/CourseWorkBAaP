@@ -1,7 +1,6 @@
 package passwordmanager.utils;
 
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.StageStyle;
@@ -9,8 +8,6 @@ import javafx.stage.StageStyle;
 import java.util.Optional;
 
 public class AlertUtils {
-
-    // Метод, который создаёт и стилизует Alert
     private static Alert createStyledAlert(Alert.AlertType type, String title, String header, String message) {
         Alert alert = new Alert(type);
         alert.initStyle(StageStyle.UTILITY);
@@ -21,7 +18,6 @@ public class AlertUtils {
         return alert;
     }
 
-    // Простой вариант для информационных сообщений
     private static void showAlert(Alert.AlertType type, String title, String header, String message) {
         Alert alert = createStyledAlert(type, title, header, message);
         alert.showAndWait();

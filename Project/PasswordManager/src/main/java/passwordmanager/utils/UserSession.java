@@ -22,11 +22,19 @@ public class UserSession {
 
     private int userId = -1;
     private String masterPassword;
+
+    private int serviceId;
+    private String serviceName;
+    private String username;
+    private String url;
+    private String generatedPassword;
+    private String fxmlFilePath;
+    private String title;
+
     private final EventHandler<Event> activityHandler;
     private boolean isTrackingActive = false;
 
     private UserSession() {
-        // Инициализация демон-потока для таймера
         this.scheduler = Executors.newSingleThreadScheduledExecutor(r -> {
             Thread t = new Thread(r, "UserSession-Inactivity-Timer");
             t.setDaemon(true);
@@ -48,6 +56,15 @@ public class UserSession {
     public void login(int userId, String masterPassword) {
         this.userId = userId;
         this.masterPassword = masterPassword;
+
+        this.serviceId = -1;
+        this.serviceName = null;
+        this.username =null;
+        this.url = null;
+        this.generatedPassword = null;
+        this.fxmlFilePath = null;
+        this.title = null;
+
         startActivityTracking();
         resetInactivityTimer();
     }
@@ -55,14 +72,12 @@ public class UserSession {
     private void startActivityTracking() {
         if (isTrackingActive) return;
 
-        // Обработка существующих окон
         for (Window window : Window.getWindows()) {
             if (window instanceof Stage) {
                 setupStageTracking((Stage) window);
             }
         }
 
-        // Обработка новых окон
         Window.getWindows().addListener((ListChangeListener<Window>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
@@ -78,11 +93,19 @@ public class UserSession {
         isTrackingActive = true;
     }
 
+    public void deleteServiceInfo(){
+        serviceId = -1;
+        serviceName = null;
+        username = null;
+        url = null;
+        generatedPassword = null;
+        fxmlFilePath = null;
+        title = null;
+    }
+
     private void setupStageTracking(Stage stage) {
-        // Обработчик для событий окна
         stage.addEventHandler(Event.ANY, activityHandler);
 
-        // Обработчик смены сцены
         stage.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (oldScene != null) {
                 removeSceneHandlers(oldScene);
@@ -92,7 +115,6 @@ public class UserSession {
             }
         });
 
-        // Обработчик закрытия окна
         stage.setOnCloseRequest(event -> {
             if (Window.getWindows().stream().noneMatch(Window::isShowing)) {
                 shutdown();
@@ -148,6 +170,13 @@ public class UserSession {
 
         masterPassword = null;
         userId = -1;
+        serviceId = 0;
+        serviceName = null;
+        username = null;
+        generatedPassword = null;
+        url = null;
+        fxmlFilePath = null;
+        title = null;
         System.out.println("Сессия завершена по таймауту бездействия");
 
         Platform.runLater(() -> {
@@ -168,6 +197,13 @@ public class UserSession {
 
         masterPassword = null;
         userId = -1;
+        serviceId = 0;
+        serviceName = null;
+        username = null;
+        generatedPassword = null;
+        url = null;
+        fxmlFilePath = null;
+        title = null;
         System.out.println("Сессия завершена (тихий режим)");
 
         Platform.runLater(() -> {
@@ -190,11 +226,6 @@ public class UserSession {
         }
     }
 
-    public void manualLogout() {
-        cancelLogoutTask();
-        logout();
-    }
-
     private void cancelLogoutTask() {
         if (logoutTask != null) {
             logoutTask.cancel(false);
@@ -213,6 +244,42 @@ public class UserSession {
             Thread.currentThread().interrupt();
         }
         isTrackingActive = false;
+    }
+
+    public void setUserId(int userId) {this.userId = userId;}
+
+    public int getServiceId() {return serviceId;}
+
+    public void setServiceId(int serviceId) {this.serviceId = serviceId;}
+
+    public String getServiceName() {return serviceName;}
+
+    public void setServiceName(String serviceName) {this.serviceName = serviceName;}
+
+    public String getUsername() {return username;}
+
+    public void setUsername(String username) {this.username = username;}
+
+    public String getUrl() {return url;}
+
+    public void setUrl(String url) {this.url = url;}
+
+    public String getFxmlFilePath() {return fxmlFilePath;}
+
+    public void setFxmlFilePath(String fxmlFilePath) {this.fxmlFilePath = fxmlFilePath;}
+
+    public String getTitle() {return title;}
+
+    public void setTitle(String title) {this.title = title;}
+
+    public void setGeneratedPassword(String password) {
+        this.generatedPassword = password;
+    }
+
+    public String getGeneratedPassword() {return generatedPassword;}
+
+    public void clearGeneratedPassword() {
+        this.generatedPassword = null;
     }
 
     public int getUserId() {

@@ -27,7 +27,7 @@
         <TextField fx:id="visibleServicePasswordField" layoutX="163.0" layoutY="330.0" prefHeight="38.0" prefWidth="229.0" promptText="Введите пароль" styleClass="text-field-for-password" visible="false" />
         <Label layoutX="161.0" layoutY="433.0" text="Сайт" />
         <TextField fx:id="urlField" layoutX="163.0" layoutY="463.0" prefHeight="38.0" prefWidth="229.0" promptText="Введите ссылку" styleClass="text-field-for-url" />
-        <ImageView fx:id="eyeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="359.0" layoutY="337.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true" styleClass="icon">
+        <ImageView fx:id="eyeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="336.0" layoutY="337.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true" styleClass="icon">
             <image>
                 <Image url="@../icons/close-purple-eye.png" />
             </image>
@@ -38,5 +38,10 @@
          </image>
       </ImageView>
       <Button fx:id="cancelButton" layoutX="149.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleBackAction" styleClass="cancelButton" text="Отмена" />
+      <ImageView fx:id="generateIcon" fitHeight="25.0" fitWidth="25.0" layoutX="363.0" layoutY="336.0" onMouseClicked="#handleGeneratePasswordAction" pickOnBounds="true" preserveRatio="true" styleClass="icon">
+         <image>
+            <Image url="@../icons/generate-icon.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

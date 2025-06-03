@@ -8,6 +8,10 @@
     -fx-font-size: 14px;
 }
 
+.secondary-label {
+    -fx-text-fill: #9f9393;
+    -fx-font-size: 12px;
+}
 
 .title-label {
     -fx-font-size: 28px;
@@ -181,7 +185,7 @@
 }
 
 .vbox-style {
-    -fx-margin: 0 0 0 20px; /* внешний отступ */
+    -fx-margin: 0 0 0 20px;
     -fx-padding-left: 20px;
     -fx-padding-top: 0;
     -fx-padding-right: 0;
@@ -190,7 +194,7 @@
 
 .check-box {
     -fx-text-fill: #e0e0e0;
-    -fx-font-size: 14px;
+    -fx-font-size: 15px;
 }
 
 .check-box .box {
@@ -198,8 +202,17 @@
     -fx-border-color: rgba(100, 110, 140, 0.4);
     -fx-border-radius: 4px;
     -fx-border-width: 1px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 1);
     -fx-padding: 3px;
+}
+
+.check-box:hover .box {
+    -fx-background-color: rgba(45, 50, 75, 0.9);
+    -fx-effect: dropshadow(three-pass-box, rgba(100, 110, 140, 0.3), 6, 0, 0, 2);
+}
+
+.check-box:armed .box {
+    -fx-background-color: rgba(25, 30, 45, 0.9);
+    -fx-border-color: #5d5fef;
 }
 
 .check-box:selected .box {
@@ -207,15 +220,14 @@
     -fx-border-color: #5d5fef;
 }
 
-.check-box .box:hover {
-    -fx-background-color: rgba(45, 50, 75, 0.9);
-    -fx-effect: dropshadow(three-pass-box, rgba(100, 110, 140, 0.3), 6, 0, 0, 2);
-}
-
 .check-box:selected .mark {
-    -fx-background-color: white;
+    -fx-background-image: url("../icons/ok-icon.png");
+    -fx-background-color: transparent;
+    -fx-background-size: 16px 16px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-shape: "";
 }
-
 
 .icon {
     -fx-cursor: hand;

@@ -45,7 +45,6 @@ public class ServiceStorageController {
         setupTableRowClickHandler();
     }
 
-
     private void setupTableRowClickHandler() {
         serviceTable.setRowFactory(tv -> {
             TableRow<TableServiceDTO> row = new TableRow<>();

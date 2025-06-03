@@ -3,7 +3,6 @@ module main.passwordmanager {
     requires javafx.fxml;
     requires java.sql;
     requires org.postgresql.jdbc;
-    requires javafx.web;
 
     opens passwordmanager.icons;
     opens passwordmanager to javafx.fxml;

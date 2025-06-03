@@ -30,7 +30,7 @@ public class MainController {
     @FXML
     private void initialize() {
         loadScreen("storage", "/passwordmanager/fxml/service_storage.fxml");
-        loadScreen("generator", "/passwordmanager/fxml/password_generator.fxml");
+        loadScreen("generator", "/passwordmanager/fxml/main_password_generator.fxml");
 
         setScreen("storage");
     }
@@ -48,7 +48,7 @@ public class MainController {
             Parent screen = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlFile)));
             screens.put(name, screen);
         } catch (IOException e) {
-            System.err.println("Ошибка загрузки " + fxmlFile + ": " + e.getMessage());
+            AlertUtils.showErrorAlert("Ошибка загрузки " + fxmlFile + ": " + e.getMessage());
         }
     }
 

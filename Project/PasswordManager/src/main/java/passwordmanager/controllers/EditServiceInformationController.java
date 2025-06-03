@@ -37,6 +37,8 @@ public class EditServiceInformationController {
     private ImageView deleteIcon;
     @FXML
     private ImageView backIcon;
+    @FXML
+    private ImageView generateIcon;
 
     @FXML
     private ImageView eyeIcon;
@@ -61,11 +63,44 @@ public class EditServiceInformationController {
         try{
             Connection connection = Database.getConnection();
             servicesDAO = new ServicesDAO(connection);
+
+            UserSession.getInstance().setFxmlFilePath("/passwordmanager/fxml/edit_service_information.fxml");
+            UserSession.getInstance().setTitle("Изменение информации");
+
+            if(userSession.getServiceId() !=-1){
+                serviceId = userSession.getServiceId();
+            }
+
+            if(userSession.getServiceName() != null) {
+                serviceNameField.setText(userSession.getServiceName());
+            }
+
+            if(userSession.getUsername() != null) {
+                serviceUsernameField.setText(userSession.getUsername());
+            }
+
+            if(userSession.getGeneratedPassword() != null) {
+                servicePasswordField.setText(userSession.getGeneratedPassword());
+            }
+
+            if(userSession.getUrl() !=null){
+                urlField.setText(userSession.getUrl());
+            }
+
+            UIBehaviorUtils.setupFieldNavigation(serviceNameField, serviceUsernameField);
+            UIBehaviorUtils.setupFieldNavigation(serviceUsernameField, servicePasswordField);
+            UIBehaviorUtils.setupFieldNavigation(servicePasswordField, urlField);
+            UIBehaviorUtils.setupFinalField(urlField, this::handleSaveServiceAction);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        Platform.runLater(() -> serviceNameField.requestFocus());
+        Platform.runLater(() -> {
+            serviceNameField.requestFocus();
+            serviceNameField.deselect();
+            serviceNameField.positionCaret(serviceNameField.getText().length());
+        });
+
         visibleServicePasswordField.textProperty().bindBidirectional(servicePasswordField.textProperty());
 
     }
@@ -101,9 +136,27 @@ public class EditServiceInformationController {
     @FXML
     public void handleBackAction() {
         try {
+            UserSession.getInstance().deleteServiceInfo();
             Stage stage = (Stage) backIcon.getScene().getWindow();
             WindowManager.slideReplaceWindowFromLeft(stage,"/passwordmanager/fxml/service_information.fxml","Информация",serviceId);
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleGeneratePasswordAction() {
+        try {
+            userSession.setServiceId(serviceId);
+            userSession.setServiceName(serviceNameField.getText());
+            userSession.setUsername(serviceUsernameField.getText());
+            userSession.setGeneratedPassword(servicePasswordField.getText());
+            userSession.setUrl(urlField.getText());
+
+            Stage stage = (Stage) generateIcon.getScene().getWindow();
+            WindowManager.mainSwitchScene(stage,"/passwordmanager/fxml/service_password_generator.fxml","Генератор");
+        } catch (IOException e){
+            AlertUtils.showErrorAlert("Ошибка перехода в Генератор");
             e.printStackTrace();
         }
     }
@@ -148,6 +201,7 @@ public class EditServiceInformationController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        UserSession.getInstance().deleteServiceInfo();
     }
 
 }

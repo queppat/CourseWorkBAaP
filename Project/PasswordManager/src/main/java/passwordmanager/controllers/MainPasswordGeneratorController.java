@@ -10,7 +10,7 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import passwordmanager.utils.PasswordGenerator;
 
-public class PasswordGeneratorController {
+public class MainPasswordGeneratorController {
     @FXML
     private TextArea passwordField;
     @FXML
@@ -45,7 +45,7 @@ public class PasswordGeneratorController {
 
         lengthOfPasswordField.setOnAction(e -> {
             String newLength = lengthOfPasswordField.getText();
-            if (newLength.chars().allMatch(Character::isDigit) && !newLength.equals(lastValidLength)) {
+            if (!newLength.equals(lastValidLength)) {
                 lastValidLength = newLength;
                 handleGeneratePasswordAction();
             }
@@ -54,7 +54,7 @@ public class PasswordGeneratorController {
         lengthOfPasswordField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 String newLength = lengthOfPasswordField.getText();
-                if (newLength.chars().allMatch(Character::isDigit) && !newLength.equals(lastValidLength)) {
+                if (!newLength.equals(lastValidLength)) {
                     lastValidLength = newLength;
                     handleGeneratePasswordAction();
                 }
@@ -83,6 +83,8 @@ public class PasswordGeneratorController {
 
         handleGeneratePasswordAction();
     }
+
+    public String getGeneratedPassword() { return passwordField.getText(); }
 
     private void setupAutoResize() {
         passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -117,8 +119,18 @@ public class PasswordGeneratorController {
 
         int length = 5;
         if (stringLength.chars().allMatch(Character::isDigit)) {
-            length = Math.min(128, Math.max(5, Integer.parseInt(stringLength)));
+            length = Integer.parseInt(stringLength);
+            if(length < 5) {
+                length = 5;
+            } else if(length > 128) {
+                length = 128;
+            }
         }
+
+        lengthOfPasswordField.setText(Integer.toString(length));
+
+        lengthOfPasswordField.requestFocus();
+        lengthOfPasswordField.positionCaret(lengthOfPasswordField.getText().length());
 
         String password = PasswordGenerator.generate(
                 length,
@@ -137,6 +149,6 @@ public class PasswordGeneratorController {
         content.putString(passwordField.getText());
         clipboard.setContent(content);
 
-        System.out.println(" Текст скопирован: " + passwordField.getText());
+        System.out.println("Текст скопирован: " + passwordField.getText());
     }
 }

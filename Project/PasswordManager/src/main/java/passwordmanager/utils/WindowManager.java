@@ -45,7 +45,7 @@ public class WindowManager {
         double newHeight = 600;
 
         double newX = centerX - newWidth / 2;
-        double newY = centerY - newHeight / 2;
+        double newY = centerY - newHeight / 2 - 12;
 
         Scene scene = new Scene(root, newWidth, newHeight);
         stage.setScene(scene);

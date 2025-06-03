@@ -1,5 +1,6 @@
 package passwordmanager.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -31,13 +32,14 @@ public class AddServiceController {
     @FXML
     private ImageView generateIcon;
     @FXML
-    private TextField URLField;
+    private TextField urlField;
     @FXML
     private Button addServiceButton;
     @FXML
     private ImageView backIcon;
 
     private ServicesDAO servicesDAO;
+    private UserSession userSession = UserSession.getInstance();
 
     private final Image openedEyeIcon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/passwordmanager/icons/open-purple-eye.png")));
     private final Image closedEyeIcon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/passwordmanager/icons/close-purple-eye.png")));
@@ -49,16 +51,40 @@ public class AddServiceController {
             Connection connection = Database.getConnection();
             servicesDAO = new ServicesDAO(connection);
 
-            visibleServicePasswordField.textProperty().bindBidirectional(servicePasswordField.textProperty());
+            UserSession.getInstance().setFxmlFilePath("/passwordmanager/fxml/add_service.fxml");
+            UserSession.getInstance().setTitle("Добавление сервиса");
 
+            if(userSession.getServiceName() != null) {
+                serviceNameField.setText(userSession.getServiceName());
+            }
+
+            if(userSession.getUsername() != null) {
+                usernameField.setText(userSession.getUsername());
+            }
+
+            if(userSession.getGeneratedPassword() != null) {
+                servicePasswordField.setText(userSession.getGeneratedPassword());
+            }
+
+            if(userSession.getUrl() !=null){
+                urlField.setText(userSession.getUrl());
+            }
+
+            visibleServicePasswordField.textProperty().bindBidirectional(servicePasswordField.textProperty());
 
             UIBehaviorUtils.setupFieldNavigation(serviceNameField, usernameField);
             UIBehaviorUtils.setupFieldNavigation(usernameField, servicePasswordField);
-            UIBehaviorUtils.setupFieldNavigation(servicePasswordField, URLField);
-            UIBehaviorUtils.setupFinalField(URLField, this::handleAddServiceButtonAction);
+            UIBehaviorUtils.setupFieldNavigation(servicePasswordField, urlField);
+            UIBehaviorUtils.setupFinalField(urlField, this::handleAddServiceButtonAction);
         } catch (SQLException e){
             e.printStackTrace();
         }
+
+        Platform.runLater(() -> {
+            serviceNameField.requestFocus();
+            serviceNameField.deselect();
+            serviceNameField.positionCaret(serviceNameField.getText().length());
+        });
     }
 
     @FXML
@@ -76,6 +102,7 @@ public class AddServiceController {
     @FXML
     public void handleBackAction() {
         try {
+            UserSession.getInstance().deleteServiceInfo();
             Stage stage = (Stage) backIcon.getScene().getWindow();
             WindowManager.slideReplaceWindowFromLeft(stage, "/passwordmanager/fxml/main.fxml", "KeyForge",null);
         } catch (IOException e) {
@@ -88,7 +115,7 @@ public class AddServiceController {
         String serviceName = serviceNameField.getText();
         String username = usernameField.getText();
         String password = servicePasswordField.getText();
-        String url = URLField.getText();
+        String url = urlField.getText();
 
         if(serviceName.isEmpty() || username.isEmpty() || password.isEmpty() || url.isEmpty()){
             AlertUtils.showErrorAlert("Заполните все поля");
@@ -130,16 +157,21 @@ public class AddServiceController {
             AlertUtils.showErrorAlert("Ошибка при входе в систему");
             e.printStackTrace();
         }
+
+        UserSession.getInstance().deleteServiceInfo();
     }
 
-    //TODO Добавить дополнительную реализацию main окна. Тут нужно при открытии генератора добавить "Использовать этот пароль"
-    // и переместиться в предыдущее окно и автоматически вставить пароль. (Возможно будет запарно).
-    // можно использовать левый свайп и передать туда пароль, дописать метод в windowManager.
     @FXML
     public void handleGeneratePasswordAction() {
         try{
+            userSession.setServiceName(serviceNameField.getText());
+            userSession.setUsername(usernameField.getText());
+            userSession.setGeneratedPassword(servicePasswordField.getText());
+            userSession.setUrl(urlField.getText());
+
+
             Stage stage = (Stage) generateIcon.getScene().getWindow();
-            WindowManager.mainSwitchScene(stage, "/passwordmanager/fxml/password_generator.fxml","Генератор");
+            WindowManager.mainSwitchScene(stage, "/passwordmanager/fxml/service_password_generator.fxml","Генератор");
         } catch (IOException e){
             AlertUtils.showErrorAlert("Ошибка перехода в Генератор");
             e.printStackTrace();

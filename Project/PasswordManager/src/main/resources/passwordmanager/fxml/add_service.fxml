@@ -14,7 +14,7 @@
       <TextField fx:id="usernameField" layoutX="161.0" layoutY="225.0" prefHeight="46.0" prefWidth="225.0" promptText="Введите имя" />
       <PasswordField fx:id="servicePasswordField" layoutX="162.0" layoutY="301.0" prefHeight="46.0" prefWidth="225.0" promptText="Введите пароль" />
       <TextField fx:id="visibleServicePasswordField" layoutX="162.0" layoutY="301.0" prefHeight="46.0" prefWidth="225.0" promptText="Введите пароль" styleClass="text-field-for-password" visible="false" />
-      <TextField fx:id="URLField" layoutX="162.0" layoutY="427.0" prefHeight="46.0" prefWidth="225.0" promptText="Введите ссылку" />
+      <TextField fx:id="urlField" layoutX="162.0" layoutY="427.0" prefHeight="46.0" prefWidth="225.0" promptText="Введите ссылку" />
       <Button fx:id="addServiceButton" layoutX="207.0" layoutY="510.0" mnemonicParsing="false" onAction="#handleAddServiceButtonAction" prefHeight="35.0" prefWidth="134.0" text="Сохранить" />
       <Label layoutX="198.0" layoutY="194.0" prefHeight="25.0" prefWidth="144.0" text="Имя пользователя" />
       <Label layoutX="239.0" layoutY="277.0" text="Пароль" />

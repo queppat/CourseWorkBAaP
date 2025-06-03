@@ -35,7 +35,7 @@ public class SuperUserDAO {
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            if("23505".equals(e.getSQLState())) { //UNIQUE constraint failed
+            if("23505".equals(e.getSQLState())) {
                 System.out.println("Пользователь с таким именем существует");
             } else {
                 e.printStackTrace();

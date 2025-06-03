@@ -59,7 +59,6 @@ public class WindowManager {
         stage.setY(newY);
     }
 
-
     private static void centerStageOnScreen(Stage stage) {
         Screen screen = Screen.getPrimary();
         double screenWidth = screen.getBounds().getWidth();
